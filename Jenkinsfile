@@ -9,7 +9,7 @@ pipeline {
                 CLUSTER_NAME = 'devops'
                 LOCATION = 'us-central1'
                 CREDENTIALS_ID = 'kubernetes'		
-	}
+	}           build = '1'
 	
     stages {
 	    stage('Scm Checkout') {
@@ -35,7 +35,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 			    script {
-				    myimage = docker.build("masudd11/devops:${env.BUILD_ID}")
+				    myimage = docker.build("masudd11/devops:${build}")
 			    }
 		    }
 	    }
