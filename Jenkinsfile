@@ -8,8 +8,9 @@ pipeline {
 		PROJECT_ID = 'devops-374608'
                 CLUSTER_NAME = 'devops'
                 LOCATION = 'us-central1'
-                CREDENTIALS_ID = 'kubernetes'		
-	}           build = '1'
+                CREDENTIALS_ID = 'kubernetes'
+				build = '1'	
+	}           
 	
     stages {
 	    stage('Scm Checkout') {
