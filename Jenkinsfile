@@ -35,10 +35,11 @@ pipeline {
 	    stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
-// 			    script {
-// 				    myimage = docker.build("masudd11/devops:${BUILD_ID}")
-// 			    }
-			    sh 'sudo docker image build -t masudd11/devops:${BUILD_ID} .'
+		            script {
+ 				    def myimage = docker.build("masudd11/devops:${BUILD_ID}")
+				    myimage.push()
+			    }
+//			    sh 'sudo docker image build -t masudd11/devops:${BUILD_ID} .'
 		    }
 	    }
 	    
