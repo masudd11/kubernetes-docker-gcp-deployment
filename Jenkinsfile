@@ -35,9 +35,10 @@ pipeline {
 	    stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
-			    script {
-				    myimage = docker.build("masudd11/devops:${BUILD_ID}")
-			    }
+// 			    script {
+// 				    myimage = docker.build("masudd11/devops:${BUILD_ID}")
+// 			    }
+			    sh 'docker build image -t masudd11/devops:${BUILD_ID}'
 		    }
 	    }
 	    
