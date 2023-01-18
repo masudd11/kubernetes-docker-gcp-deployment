@@ -35,7 +35,7 @@ pipeline {
 		    steps {
 			    sshagent(['myjavaid']) {
                 // some block
-				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@3.108.66.159:/opt/tomcat10/webapps/'
+				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/javapro/kubernetes/target/kubernetes-1.0-AMIT.war ubuntu@3.108.66.159:/opt/tomcat10/webapps/'
                 }
 		    }
 	    }
@@ -43,7 +43,7 @@ pipeline {
 		stage('') {
 		    steps {
 			    sshagent (['myjavaid']) {
-				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@13.233.196.205:/opt/tomcat10/webapps/'
+				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/javapro/kubernetes/target/kubernetes-1.0-AMIT.war ubuntu@13.233.196.205:/opt/tomcat10/webapps/'
 				}
 		    }
 	    }
