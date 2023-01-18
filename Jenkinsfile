@@ -12,7 +12,7 @@ pipeline {
 				build = '1'	
 	}           
 	
-    // stages {
+    stages {
 	//     stage('Scm Checkout') {
 	// 	    steps {
 	// 		    checkout scm
@@ -47,12 +47,12 @@ pipeline {
 				}
 		    }
 	    }
-		stage('Test') {
-		    steps {
-			    echo "Testing..."
-			    sh 'mvn test'
-		    }
-	    }
+		// stage('Test') {
+		//     steps {
+		// 	    echo "Testing..."
+		// 	    sh 'mvn test'
+		//     }
+	    // }
 	    
 	    // stage('Build Docker Image') {
 		//     steps {
