@@ -19,34 +19,38 @@ pipeline {
 		    }
 	    }
 	    
+		stage('Test') {
+		    steps {
+			    echo "Testing..."
+			    sh 'mvn test'
+		    }
+	    }
 	    stage('Build') {
 		    steps {
 			    sh 'mvn clean package'
 		    }
 	    }
 	    
-	    stage('Test') {
+	    stage('deploy on testing server') {
+		    steps {
+			    sshagent(['myjavaid']) {
+                // some block
+				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@3.108.66.159:/opt/tomcat10/webapps/'
+                }
+		    }
+	    }
+
+		stage('') {
+		    steps {
+			    sshagent (['myjavaid']) {
+				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@13.233.196.205:/opt/tomcat10/webapps/'
+				}
+		    }
+	    }
+		stage('Test') {
 		    steps {
 			    echo "Testing..."
 			    sh 'mvn test'
-		    }
-	    }
-
-		stage('deploy on tomcat testing server') {
-		    steps {
-			    sshagent(['myjavaid']) {
-                           // some block
-				   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@3.108.66.159:/opt/tomcat10/webapps/'
-                           }
-		    }
-	    }
-
-		stage('deploy on tomcat testing server') {
-		    steps {
-			    sshagent(['myjavaid']) {
-                           // some block
-				   sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/project/temp/app.war ubuntu@13.233.196.205:/opt/tomcat10/webapps/'
-                           }
 		    }
 	    }
 	    
