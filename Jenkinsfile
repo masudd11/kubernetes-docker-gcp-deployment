@@ -34,11 +34,10 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-			    withCredentials([file(credentialsId: 'dockerid', variable: 'dockerid', url: "https://hub.docker.com")]) {
-					sh 'docker push masudd11/javaproject:{BUILD_NUMBER}'
-				}
-		    }
-	    }
+			    sh 'docker login -u masudd11 -p ${pass}' 
+				sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
+			}
+		}
 	    
 	    // stage('Deploy to K8s') {
 		//     steps{
