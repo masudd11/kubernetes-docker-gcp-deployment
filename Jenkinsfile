@@ -23,14 +23,14 @@ pipeline {
 			    sh 'mvn clean package'
 		    }
 	    }
-	    // stage('Build Docker Image') {
-		//     steps {
-		// 	    sh 'whoami'
-		// 	    script {
-		// 		    myimage = docker.build("masudd11/devops:${BUILD_ID}")
-		// 	    }
-		//     }
-	    // }
+	    stage('Build Docker Image') {
+		    steps {
+			    sh 'whoami'
+				sh 'pwd'
+			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+			    }
+		    }
+	    }
 	    
 	    // stage("Push Docker Image") {
 		//     steps {
