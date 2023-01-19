@@ -8,45 +8,28 @@ pipeline {
 		PROJECT_ID = 'devops-374608'
                 CLUSTER_NAME = 'devops'
                 LOCATION = 'us-central1'
-                CREDENTIALS_ID = 'kubernetes'
-				build = '1'	
+                CREDENTIALS_ID = 'kubernetes'	
 	}           
 	
     stages {
-	//     stage('Scm Checkout') {
-	// 	    steps {
-	// 		    checkout scm
-	// 	    }
-	//     }
-	    
-		stage('Test') {
+	    stage('cloning directory from github.com') {
 		    steps {
-			    echo "Testing..."
-			    sh 'mvn test'
-		    }
-	    }
-	    stage('Build') {
-		    steps {
-			    sh 'mvn clean package'
+				sh 'git credentialsId: 'githubid', url: https://github.com/masudd11/kubernetes-docker-gcp-deployment.git'
 		    }
 	    }
 	    
-	    stage('deploy on testing server') {
-		    steps {
-			    sshagent(['myjavaid']) {
-                // some block
-				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/javapro/kubernetes/target/kubernetes-1.0-AMIT.war ubuntu@3.108.66.159:/opt/tomcat10/webapps/'
-                }
-		    }
-	    }
-
-		stage('') {
-		    steps {
-			    sshagent (['myjavaid']) {
-				sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/javapro/kubernetes/target/kubernetes-1.0-AMIT.war ubuntu@13.233.196.205:/opt/tomcat10/webapps/'
-				}
-		    }
-	    }
+		// stage('Test') {
+		//     steps {
+		// 	    echo "Testing..."
+		// 	    sh 'mvn test'
+		//     }
+	    // }
+	    // stage('Build') {
+		//     steps {
+		// 	    sh 'mvn clean package'
+		//     }
+	    // }
+	    
 		// stage('Test') {
 		//     steps {
 		// 	    echo "Testing..."
