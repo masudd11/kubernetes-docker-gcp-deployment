@@ -12,31 +12,17 @@ pipeline {
 	}           
 	
     stages {
-	    stage('cloning directory from github.com') {
+		stage('Test') {
 		    steps {
-				sh 'git credentialsId: 'githubid', url: https://github.com/masudd11/kubernetes-docker-gcp-deployment.git'
+			    echo "Testing..."
+			    sh 'mvn test'
 		    }
 	    }
-	    
-		// stage('Test') {
-		//     steps {
-		// 	    echo "Testing..."
-		// 	    sh 'mvn test'
-		//     }
-	    // }
-	    // stage('Build') {
-		//     steps {
-		// 	    sh 'mvn clean package'
-		//     }
-	    // }
-	    
-		// stage('Test') {
-		//     steps {
-		// 	    echo "Testing..."
-		// 	    sh 'mvn test'
-		//     }
-	    // }
-	    
+	    stage('Build') {
+		    steps {
+			    sh 'mvn clean package'
+		    }
+	    }
 	    // stage('Build Docker Image') {
 		//     steps {
 		// 	    sh 'whoami'
