@@ -28,9 +28,8 @@ pipeline {
 			    sh 'whoami'
 				sh 'pwd'
 			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
-			    }
-		    }
-	    }
+			}
+		}
 	    
 	    // stage("Push Docker Image") {
 		//     steps {
