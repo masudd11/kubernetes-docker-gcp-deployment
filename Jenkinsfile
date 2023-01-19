@@ -34,7 +34,7 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-			    sh 'docker login -u "masudd11" -p "${pass}"' 
+			    // sh 'docker login -u "masudd11" -p "${pass}"' 
 				sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
 			}
 		}
