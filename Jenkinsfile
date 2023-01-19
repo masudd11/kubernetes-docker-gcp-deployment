@@ -27,7 +27,7 @@ pipeline {
 		    steps {
 			    sh 'whoami'
 				sh 'pwd'
-			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+			    sh 'sudo docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
 			}
 		}
 	    
