@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp
-     image: masudd11/devops:tagversion
+     image: masudd11/javaproject:tagversion
      ports:
      - containerPort: 8080
 
