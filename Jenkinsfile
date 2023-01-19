@@ -26,8 +26,9 @@ pipeline {
 	    stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
+				sh 'sudo su'
 				sh 'pwd'
-			    sh 'sudo docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
 			}
 		}
 	    
