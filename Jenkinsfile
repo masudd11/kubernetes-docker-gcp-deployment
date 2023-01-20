@@ -24,20 +24,20 @@ pipeline {
 		    }
 	    }
 	    stage('Build Docker Image') {
-		    steps {
+		    
 			    sh 'whoami'
 				
 				sh 'pwd'
 			    dockerImage = docker build("masudd11/javapp:1")
-			}
+			
 		}
 	    
 	    stage("Push Docker Image") {
-		    steps {
-				withDockerRegistry(credentialsId: 'dockersecret', url: 'masudd11/javaproject') {
-                  // some block
-				  dockerImage.push()
-                }
+		    
+				                withDockerRegistry(credentialsId: 'dockersecret', url: 'masudd11/javaproject') {
+                                // some block
+				                dockerImage.push()
+                
 			}
 		}
 	    
