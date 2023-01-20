@@ -28,7 +28,7 @@ pipeline {
 			    sh 'whoami'
 				
 				sh 'pwd'
-			    dockerImage = 'docker build("masudd11/javapp:1")
+			    dockerImage = docker build("masudd11/javapp:1")
 			}
 		}
 	    
