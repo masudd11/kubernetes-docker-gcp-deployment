@@ -34,7 +34,7 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'dockerid', url: '') {
+				withDockerRegistry(credentialsId: 'dockerpass', url: '') {
     			// some block
 
 			    // sh 'docker login -u masudd11 -p ${pass}' 
