@@ -28,18 +28,16 @@ pipeline {
 			    sh 'whoami'
 				
 				sh 'pwd'
-			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+			    dockerImage = 'docker build("masudd11/javapp:1")
 			}
 		}
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'dockerpass', url: '') {
-    			// some block
-
-			    sh 'docker login -u masudd11 -p ${dockerpass}' 
-				sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
-				}
+				withDockerRegistry(credentialsId: 'dockersecret', url: 'masudd11/javaproject') {
+                  // some block
+				  dockerImage.push()
+                }
 			}
 		}
 	    
