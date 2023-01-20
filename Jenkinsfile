@@ -37,7 +37,7 @@ pipeline {
 				withDockerRegistry(credentialsId: 'dockerpass', url: '') {
     			// some block
 
-			    // sh 'docker login -u masudd11 -p ${pass}' 
+			    sh 'docker login -u masudd11 -p ${dockerpass}' 
 				sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
 				}
 			}
