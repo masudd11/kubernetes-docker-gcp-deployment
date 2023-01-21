@@ -36,11 +36,11 @@ pipeline {
 	    stage("Push Docker Image") {
 		    steps {
 				// withDockerRegistry(credentialsId: 'dockerid', url: '') {
-    			withCredentials([file(credentialsId: 'devops', variable: 'devops', url: "https://gcr.io")])
+    			withCredentials([file(credentialsId: 'devops', variable: 'devops', url: "https://gcr.io")]) {
                 sh  'docker push gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
-		        // }
+		        }
 			}
 		}
 	    
