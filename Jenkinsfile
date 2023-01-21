@@ -40,7 +40,7 @@ pipeline {
                 sh  'docker push gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
-				}
+		        // }
 			}
 		}
 	    
