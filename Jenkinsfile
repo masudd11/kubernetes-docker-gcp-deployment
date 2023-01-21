@@ -6,8 +6,8 @@ pipeline {
 	
 	environment {
 		PROJECT_ID = 'devops-374608'
-        CLUSTER_NAME = 'dev-cluster'
-        LOCATION = 'us-central1'
+        CLUSTER_NAME = 'cluster-1'
+        LOCATION = 'us-central-1c'
         CREDENTIALS_ID = 'devops'	
 	}           
 	
@@ -28,17 +28,18 @@ pipeline {
 			    sh 'whoami'
 				
 				sh 'pwd'
-			    sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+			    // sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
+				sh 'docker build -t gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
 			}
 		}
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'dockerid', url: '') {
-    			// some block
-
+				// withDockerRegistry(credentialsId: 'dockerid', url: '') {
+    			withCredentials([file(credentialsId: 'devops', variable: 'devops', url: "https://gcr.io")])
+                sh  'docker push gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
-				sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
+				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
 				}
 			}
 		}
