@@ -7,7 +7,7 @@ pipeline {
 	environment {
 		PROJECT_ID = 'devops-374608'
         CLUSTER_NAME = 'cluster-1'
-        LOCATION = 'us-central-1c'
+        LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'devops'	
 	}           
 	
