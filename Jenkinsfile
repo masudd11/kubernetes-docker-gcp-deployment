@@ -37,6 +37,7 @@ pipeline {
 		    steps {
 				// withDockerRegistry(credentialsId: 'dockerid', url: '') {
     			withCredentials([file(credentialsId: 'filesecret', variable: 'filesecret', url: "https://gcr.io")]) {
+				sh 'gcloud auth configure-docker'	
                 sh  'docker push gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
