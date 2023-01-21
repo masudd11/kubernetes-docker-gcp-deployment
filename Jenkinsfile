@@ -29,7 +29,7 @@ pipeline {
 				
 				sh 'pwd'
 			    // sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
-				sh 'docker build -t gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
+				sh 'docker build -t gcr.io/devops-374608/javaproject:${BUILD_NUMBER} .'
 			}
 		}
 	    
