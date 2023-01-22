@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', "https://github.com/masudd11/kubernetes-docker-gcp-deployment.git"]
+
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT}/${_CONTAINERNAME}:'] 
+  
