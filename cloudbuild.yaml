@@ -4,5 +4,12 @@ steps:
 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT}/${_CONTAINERNAME}:'] 
-  
+  args: ['build', '-t', 'gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}', '.'] 
+
+substitutions:
+  _PROJECT: devops-374608
+  _CONTAINERNAME: myimg
+  _VERSION: v1.0
+
+options:
+  substitutionOption: 'ALLOW_LOOSE'
