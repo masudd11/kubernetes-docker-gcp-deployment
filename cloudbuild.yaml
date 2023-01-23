@@ -12,7 +12,7 @@ steps:
   args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${_PROJECT}/${CONTAINERNAME}:${_VERSION}']
+  args: ['push', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}']
 
 substitutions:
   _PROJECT: devops-374608
