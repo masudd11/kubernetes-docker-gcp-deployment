@@ -6,7 +6,7 @@ steps:
   args: ['test']
 
 - name: 'gcr.io/cloud-builders/mvn'
-  args: ['install']
+  args: ['clean', 'package']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
