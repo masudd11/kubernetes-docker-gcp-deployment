@@ -9,7 +9,7 @@ steps:
   args: ['install']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}', '.'] 
+  args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/${_PROJECT}/${CONTAINERNAME}:${_VERSION}']
@@ -17,7 +17,7 @@ steps:
 substitutions:
   _PROJECT: devops-374608
   _REPO_NAME: github_masudd11_kubernetes-docker-gcp-deployment
-  _CONTAINERNAME: myimg
+  # _CONTAINERNAME: myimg
   _VERSION: v2.0
 
 options:
