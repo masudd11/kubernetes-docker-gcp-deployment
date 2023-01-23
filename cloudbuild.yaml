@@ -13,7 +13,7 @@ substitutions:
   _PROJECT: devops-374608
   _REPO_NAME: github_masudd11_kubernetes-docker-gcp-deployment
   _CONTAINERNAME: myimg
-  _VERSION: v1.0
+  _VERSION: v2.0
 
 options:
   substitutionOption: 'ALLOW_LOOSE'
