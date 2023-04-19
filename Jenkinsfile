@@ -5,9 +5,9 @@ pipeline {
 	}
 	
 	environment {
-		PROJECT_ID = 'devops-374608'
-        CLUSTER_NAME = 'cluster-1'
-        LOCATION = 'us-central1-c'
+	PROJECT_ID = 'kubernetes-gcp-383911'
+        CLUSTER_NAME = 'my-gke-cluster'
+        LOCATION = 'us-central1-b'
         CREDENTIALS_ID = 'devops'	
 	}           
 	
