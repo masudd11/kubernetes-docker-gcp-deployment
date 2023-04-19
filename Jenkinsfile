@@ -29,14 +29,14 @@ pipeline {
 				
 				sh 'pwd'
 			    // sh 'docker build -t masudd11/javaproject:${BUILD_NUMBER} .'
-				sh 'docker build -t gcr.io/devops-374608/javaproject:${BUILD_NUMBER} .'
+			    sh 'docker build -t gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER} .'
 			}
 		}
 	    
 	    stage("Push Docker Image") {
 		    steps {
 				withDockerRegistry(credentialsId: 'gcr:devops', url: 'https://gcr.io') {
-                sh  'docker push gcr.io/devops-374608/javaproject:${BUILD_NUMBER}'
+					sh  'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
 		        }
