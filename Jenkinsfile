@@ -8,7 +8,7 @@ pipeline {
 	PROJECT_ID = 'kubernetes-gcp-383911'
         CLUSTER_NAME = 'my-gke-cluster'
         LOCATION = 'us-central1-b'
-        CREDENTIALS_ID = 'kubernetes-gcp-383911'	
+        CREDENTIALS_ID = 'kubernetes-gcp'	
 	}           
 	
     stages {
@@ -35,7 +35,7 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'gcr:kubernetes-gcp-383911', url: 'https://gcr.io') {
+				withDockerRegistry(credentialsId: 'gcr:kubernetes-gcp', url: 'https://gcr.io') {
 					sh  'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
 			    // sh 'docker login -u masudd11 -p ${pass}' 
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
