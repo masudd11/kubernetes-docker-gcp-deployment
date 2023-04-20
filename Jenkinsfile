@@ -41,7 +41,7 @@ pipeline {
 				// sh 'docker push masudd11/javaproject:${BUILD_NUMBER}'
 // 		        }
 			    withDockerRegistry(credentialsId: 'dockerid') {
-				    sh 'docker push masudd11/gcp-kubernetes:${BUILD_NUMBER}
+				    sh 'docker push masudd11/gcp-kubernetes:${BUILD_NUMBER}'
 			}
 		} 
 	    }
