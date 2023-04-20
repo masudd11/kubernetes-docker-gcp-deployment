@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp
-     image: masudd11/gcp-kubernetes:tagversion
+     image: gcr.io/kubernetes-gcp-383911/gcp-kubernetes:tagversion
      ports:
      - containerPort: 8080
 
