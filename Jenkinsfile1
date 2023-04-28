@@ -2,7 +2,7 @@ pipeline {
     agent any
 	tools {
 		maven 'Maven'
-        sonarqube scanner 'SonarQube Scanner'
+        sonarqube scanner 'SonarQube Scanner 4.8.0.2856'
 	}
 	
 	environment {
