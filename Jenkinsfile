@@ -5,25 +5,32 @@ pipeline {
 	}
 	
 	environment {
-	PROJECT_ID = 'kubernetes-gcp-383911'
+	    PROJECT_ID = 'kubernetes-gcp-383911'
         CLUSTER_NAME = 'my-gke-cluster'
         LOCATION = 'us-central1-b'
         CREDENTIALS_ID = 'kubernetes-gcp-383911'	
 	}           
 	
     stages {
-		stage('Test') {
-		    steps {
-			    echo "Testing..."
-			    sh 'mvn test'
-		    }
-	    }
 	    stage('Build') {
 		    steps {
 			    sh 'mvn clean package'
 		    }
 	    }
-	    stage('Build Docker Image') {
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('Sonarqube') {
+                sh 'mvn clean sonar:sonar'}
+            }
+        }
+        // stage('SQuality Gate') {
+        //     steps {
+        //         waitForQualityGate abortPipeline: true
+        //     }
+        // }
+
+	        stage('Build Docker Image') {
 		    steps {
 			    sh 'whoami'
 				
@@ -41,7 +48,7 @@ pipeline {
 // 			    withDockerRegistry(credentialsId:'dockerid', url: '') {
 // 				    sh 'docker push masudd11/gcp-kubernetes:${BUILD_NUMBER}'
 // 			}
-		} 
+		    } 
 	    }
 	    
 	    stage('Deploy to K8s') {
