@@ -12,12 +12,6 @@ pipeline {
 	}           
 	
     stages {
-		stage('Test') {
-		    steps {
-			    echo "Testing..."
-			    sh 'mvn test'
-		    }
-	    }
 	    stage('Build') {
 		    steps {
 			    sh 'mvn clean package'
@@ -26,7 +20,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('Sonarqube') {
-                sh 'mvn clean package sonar:sonar'}
+                sh 'mvn clean sonar:sonar'}
             }
         }
     }
