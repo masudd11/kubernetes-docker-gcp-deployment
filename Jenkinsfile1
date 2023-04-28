@@ -2,7 +2,7 @@ pipeline {
     agent any
 	tools {
 		maven 'Maven'
-        sonarqube 'SonarQube'
+        SonarQube 'SonarQube'
 	}
 	
 	environment {
@@ -25,9 +25,7 @@ pipeline {
 		    }
 	    }
         stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn clean sonar:sonar'
-            }
+            
         }
     }
 }    
