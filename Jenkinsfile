@@ -42,8 +42,9 @@ pipeline {
 	    
 	    stage("Push Docker Image") {
 		    steps {
-				withDockerRegistry(credentialsId: 'gcr:kubernetes-gcp-383911', url: 'https://gcr.io') { 					sh  'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
-			           sh 'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
+				withDockerRegistry(credentialsId: 'gcr:kubernetes-gcp-383911', url: 'https://gcr.io') { 					
+                    sh  'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
+			        sh 'docker push gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER}'
  		        }
 // 			    withDockerRegistry(credentialsId:'dockerid', url: '') {
 // 				    sh 'docker push masudd11/gcp-kubernetes:${BUILD_NUMBER}'
