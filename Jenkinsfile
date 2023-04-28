@@ -21,7 +21,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('Sonarqube') {
-                sh 'mvn clean sonar:sonar'}
+                sh 'mvn clean package sonar:sonar'}
             }
         }
         // stage('SQuality Gate') {
