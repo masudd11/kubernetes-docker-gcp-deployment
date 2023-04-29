@@ -30,13 +30,13 @@ pipeline {
         //     }
         // }
 
-	        stage('Build Docker Image') {
-		    steps {
-			    sh 'whoami'
+	    stage('Build Docker Image') {
+	    steps {
+		    sh 'whoami'
 				
-			    sh 'pwd'
-// 			    sh 'docker build -t masudd11/gcp-kubernetes:${BUILD_NUMBER} .'
-			    sh 'docker build -t gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER} .'
+			sh 'pwd'
+// 			sh 'docker build -t masudd11/gcp-kubernetes:${BUILD_NUMBER} .'
+			sh 'docker build -t gcr.io/${PROJECT_ID}/javaproject:${BUILD_NUMBER} .'
 			}
 		}
 	    
