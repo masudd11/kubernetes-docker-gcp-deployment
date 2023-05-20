@@ -10,6 +10,14 @@ steps:
   entrypoint: mvn
   args: ['clean','package','-Dmaven.test.skip=true']
 
+artifacts:
+  mavenArtifacts:
+  - repository: 'https://us-central1-maven.pkg.dev/{_PROJECT}/mavenregistry'
+    path: 'kubernetes-1.0-AMIT'
+    artifactId: 'build-artifact1'
+    groupId: 'com.mycompany.app'
+    version: '1.0.1'
+
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
 
