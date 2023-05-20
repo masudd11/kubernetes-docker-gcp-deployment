@@ -13,7 +13,7 @@ steps:
 - name: gcr.io/cloud-builders/docker
   args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimage', '--build-arg=JAR_FILE=target/kubernetes-1.0-AMIT.war', '.']
 
-images: ['us-central1-docker.pkg.dev/${_PROJECT}/javaimage/javaimage']
+images: ['us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimg']
 
 artifacts:
   mavenArtifacts:
