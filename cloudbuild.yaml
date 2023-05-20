@@ -2,24 +2,25 @@ steps:
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone', "https://source.developers.google.com/p/${_PROJECT}/r/${_REPO_NAME}"]
 
-- name: 'gcr.io/cloud-builders/mvn'
+- name: maven:3.3-jdk-8
+  entrypoint: mvn
   args: ['test']
 
-- name: 'gcr.io/cloud-builders/mvn'
-  args: ['clean', 'package']
+- name: maven:3.3-jdk-8
+  entrypoint: mvn
+  args: ['clean','package','-Dmaven.test.skip=true']
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}']
 
 substitutions:
-  _PROJECT: devops-374608
+  _PROJECT: kubernetes-gcp-383911
   _REPO_NAME: github_masudd11_kubernetes-docker-gcp-deployment
-  # _CONTAINERNAME: myimg
   _VERSION: v2.0
 
 options:
-  substitutionOption: 'ALLOW_LOOSE'
+  # substitutionOption: 'ALLOW_LOOSE'
   logging: CLOUD_LOGGING_ONLY
