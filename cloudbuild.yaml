@@ -13,7 +13,7 @@ steps:
 artifacts:
   mavenArtifacts:
   - repository: 'https://us-central1-maven.pkg.dev/{_PROJECT}/mavenregistry'
-    path: 'kubernetes-1.0-AMIT'
+    path: 'kubernetes-1.0-AMIT.war'
     artifactId: 'build-artifact1'
     groupId: 'com.mycompany.app'
     version: '1.0.1'
