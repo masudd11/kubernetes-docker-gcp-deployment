@@ -11,17 +11,17 @@ steps:
   args: ['clean','package','-Dmaven.test.skip=true']
 
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimg:$SHORT_SHA', '--build-arg=JAR_FILE=target/kubernetes-1.0-AMIT.war', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimg:$SHORT_SHA']
 
 images: ['us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimg:$SHORT_SHA']
 
 artifacts:
   mavenArtifacts:
   - repository: 'https://us-central1-maven.pkg.dev/${_PROJECT}/mavenregistry'
-    path: 'kubernetes/target/kubernetes-1.0-AMIT.war'
+    path: 'kubernetes/target/kubernetes-1.2-AMIT.war'
     artifactId: 'kubernetes'
     groupId: 'k8sDemo.devops.gcp'
-    version: '1.1-AMIT'
+    version: '1.2-AMIT'
 
 substitutions:
   _PROJECT: kubernetes-gcp-383911
