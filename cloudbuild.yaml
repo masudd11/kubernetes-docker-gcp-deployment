@@ -10,6 +10,11 @@ steps:
   entrypoint: mvn
   args: ['clean','package','-Dmaven.test.skip=true']
 
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT}/javaimage/jvimage', '--build-arg=JAR_FILE=target/kubernetes-1.0-AMIT.war', '.']
+
+images: ['us-central1-docker.pkg.dev/${_PROJECT}/javaimage/javaimage']
+
 artifacts:
   mavenArtifacts:
   - repository: 'https://us-central1-maven.pkg.dev/${_PROJECT}/mavenregistry'
@@ -17,12 +22,6 @@ artifacts:
     artifactId: 'kubernetes'
     groupId: 'k8sDemo.devops.gcp'
     version: '1.0-AMIT'
-
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}', '.'] 
-
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/${_PROJECT}/hello-kub:${_VERSION}']
 
 substitutions:
   _PROJECT: kubernetes-gcp-383911
@@ -32,3 +31,4 @@ substitutions:
 options:
   # substitutionOption: 'ALLOW_LOOSE'
   logging: CLOUD_LOGGING_ONLY
+  requestedVerifyOption: VERIFIED
